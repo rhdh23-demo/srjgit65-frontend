@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: srjgit65-poi-map-app-dev
+  annotations:
+    argocd/app-name: srjgit65-poi-map-app-dev
+    backstage.io/kubernetes-id: srjgit65-poi-map-app
+    backstage.io/kubernetes-namespace: srjgit65
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: rhdh23-demo/srjgit65-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.rosa-pzz6v.9nln.p1.openshiftapps.com/dev-pipelines/ns/srjgit65/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.rosa-pzz6v.9nln.p1.openshiftapps.com/k8s/ns/srjgit65/deployments/srjgit65-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.rosa-pzz6v.9nln.p1.openshiftapps.com/#https://github.com/rhdh23-demo/srjgit65-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://srjgit65-poi-map-app-srjgit65.apps.rosa-pzz6v.9nln.p1.openshiftapps.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "srjgit65"
+  system: workshop-system-srjgit65
+  consumesApis:
+    - gateway-api-srjgit65
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-srjgit65
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "srjgit65"
